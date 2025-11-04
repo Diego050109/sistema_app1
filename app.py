@@ -4,6 +4,9 @@ import requests
 app = Flask(__name__)
 app.secret_key = "clave_secreta"
 
+USUARIO = "admin"
+CLAVE = "admin"
+
 @app.route("/")
 def index():
     return render_template("login.html")
@@ -13,7 +16,7 @@ def login():
     usuario = request.form["usuario"]
     clave = request.form["clave"]
 
-    if usuario == "admin" and clave == "admin":
+    if usuario == USUARIO and clave == CLAVE:
         session["usuario"] = usuario
         return redirect(url_for("dashboard"))
     else:
@@ -43,8 +46,5 @@ def logout():
     session.clear()
     return redirect(url_for("index"))
 
-# 👇 Este bloque es necesario para que Vercel funcione
-def handler(event, context):
-    from werkzeug.middleware.dispatcher import DispatcherMiddleware
-    from werkzeug.serving import run_simple
-    return app
+if __name__ == "__main__":
+    app.run(debug=True)
