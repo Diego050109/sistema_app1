@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Pokémon</title>
+</head>
+<body>
+    <h1>Inicio de sesión</h1>
+
+    {% if error %}
+    <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <form action="/login" method="post">
+        <label>Usuario:</label>
+        <input type="text" name="usuario"><br><br>
+        <label>Contraseña:</label>
+        <input type="password" name="clave"><br><br>
+        <button type="submit">Entrar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokédex</title>
+</head>
+<body>
+    <h1>Bienvenido, {{ usuario }}</h1>
+
+    <form method="post">
+        <input type="text" name="nombre" placeholder="Nombre del Pokémon">
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if datos_pokemon %}
+        {% if datos_pokemon == "No se encontró el Pokémon" %}
+            <p style="color:red;">{{ datos_pokemon }}</p>
+        {% else %}
+            <h2>{{ datos_pokemon.name|capitalize }}</h2>
+            <img src="{{ datos_pokemon.sprites.front_default }}" alt="Imagen del Pokémon">
+        {% endif %}
+    {% endif %}
+
+    <br><br>
+    <a href="/logout">Cerrar sesión</a>
+</body>
+</html>
