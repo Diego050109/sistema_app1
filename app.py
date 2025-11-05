@@ -4,6 +4,7 @@ import requests
 app = Flask(__name__)
 app.secret_key = "clave_secreta"
 
+# Credenciales simples
 USUARIO = "admin"
 CLAVE = "admin"
 
@@ -46,5 +47,5 @@ def logout():
     session.clear()
     return redirect(url_for("index"))
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# 👇 ESTA LÍNEA ES CLAVE PARA VERCEL
+app = app
